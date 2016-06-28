@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import logging
 import struct
 from google.protobuf import descriptor_pool as _descpool
 from google.protobuf import descriptor_pb2 as _descriptor_pb2
@@ -56,15 +57,16 @@ def unpack(packet):
     return (packetlen+4,prototype)
 
 def rtp_pack(paytype,seq,ts,ssrc,pay):
-    fmt = '!ccHII%ds' % (len(pay))
-    rtpVer = chr(2 << 6)
-    return struct.pack(fmt,rtpVer,chr(paytype),seq,ts,ssrc,pay)
+    fmt = '!BBHII%ds' % (len(pay))
+    rtpVer = 2 << 6
+    return struct.pack(fmt,rtpVer,paytype,seq,ts,ssrc,pay)
 
 # return (paytype,seq,ts,ssrc,pay)
 def rtp_unpack(packet):
     if len(packet) <= 12:
+        logging.warning('packet too small: %d' % len(packet))
         return (None,None,None,None,None)
-    fmt = '!ccHII'
+    fmt = '!BBHII'
     header,paytype,seq,ts,ssrc = struct.unpack(fmt,packet[:12])
     return (paytype,seq,ts,ssrc,packet[12:])
 

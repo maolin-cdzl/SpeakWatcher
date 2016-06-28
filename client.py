@@ -21,7 +21,6 @@ STATUS_SPEAKING             = 2
 class Client(EventEmitter):
     def __init__(self,loop,sock,account,password):
         super(Client,self).__init__()
-        logging.debug('Client construct')
         self.procmap = {
             'ptt.rr.LoginAck':          self.onLogin,
             'ptt.rr.JoinGroupAck':      self.onJoinGroup,
@@ -75,7 +74,7 @@ class Client(EventEmitter):
     def stuck(self):
         self.close()
         self.online_status = STATUS_STUCK
-        self.emit('stuck',self)
+        self.emit('stuck',client=self)
 
     def onTcpReadable(self,watcher,revent):
         if revent & pyev.EV_READ:
@@ -93,11 +92,11 @@ class Client(EventEmitter):
                         processer(msg)
 
     def onUdpReadable(self,watcher,revent):
-        packet = self.udp.recvfrom(1024)
+        packet,remote = self.udp.recvfrom(1024)
         paytype,seq,ts,ssrc,pay = etpacket.rtp_unpack(packet)
 
         if paytype == 103:
-            self.emit('recv-ap',self,(paytype,seq,ts,ssrc,pay))
+            self.emit('recv-ap',client=self,seq=seq,ts=ts)
 
     def key(self):
         return self.tcp.fileno()
@@ -111,12 +110,6 @@ class Client(EventEmitter):
     def defaultGroup(self):
         if self.user is not None:
             return self.user['default_group']
-        else:
-            return 0
-
-    def currentGid(self):
-        if self.group is not None:
-            return self.group['gid']
         else:
             return 0
 
@@ -145,18 +138,21 @@ class Client(EventEmitter):
         if self.online_status != STATUS_INGROUP and self.speak_status != STATUS_IDLE:
             return False
         command.RequestMic(self.tcp,self.group['gid'])
+        self.emit('req-mic',client=self)
         return True
 
     def releaseMic(self):
         if self.speak_status != STATUS_SPEAKING:
             return False
         command.ReleaseMic(self.tcp,self.group['gid'])
+        self.emit('rel-mic',client=self)
         return True
 
-    def speak(self,packet):
+    def speak(self,seq,ts,packet):
         if self.speak_status != STATUS_SPEAKING:
             return False
         self.udp.sendto(packet,self.group['address'])
+        self.emit('send-ap',client=self,seq=seq,ts=ts)
         return True
 
     def onLogin(self,msg):
@@ -167,7 +163,7 @@ class Client(EventEmitter):
         self.online_status = STATUS_ONLINE
         self.user = { 'uid': msg.self.uid, 'name': msg.self.name, 'default_group': msg.conf.default_group }
 
-        self.emit('login',self)
+        self.emit('login',client=self)
 
     def onJoinGroup(self,msg):
         if msg.result != 0:
@@ -182,7 +178,7 @@ class Client(EventEmitter):
         self.udp_timer = self.loop.timer(0.01,5.0,self.onUdpTimer)
         self.udp_timer.start()
 
-        self.emit('join',self)
+        self.emit('join',client=self)
     
     def onLeaveGroup(self,msg):
         self.online_status = STATUS_ONLINE
@@ -194,34 +190,34 @@ class Client(EventEmitter):
         self.udp_io = None
         self.udp.close()
         self.udp = None
-        self.emit('leave',self)
+        self.emit('leave',client=self)
 
     def onLogout(self,msg):
         self.close()
-        self.emit('logout',self)
+        self.emit('logout',client=self)
 
     def onMemberGetMic(self,msg):
         self.speak_status = STATUS_LISTENING
-        self.emit('startlisten',self)
+        self.emit('startlisten',client=self)
 
     def onMemberLostMic(self,msg):
         self.speak_status = STATUS_IDLE
-        self.emit('stoplisten',self)
+        self.emit('stoplisten',client=self)
 
     def onLostMic(self,msg):
         self.speak_status = STATUS_IDLE
-        self.emit('lostmic',self)
+        self.emit('lost-mic',client=self)
 
     def onRequestMic(self,msg):
         if msg.result == 0:
             self.speak_status = STATUS_SPEAKING
-            self.emit('gotmic',self)
+            self.emit('got-mic',client=self)
         else:
-            self.emit('mic-fail',self)
+            self.emit('fail-mic',client=self)
 
     def onReleaseMic(self,msg):
         self.speak_status = STATUS_IDLE
-        self.emit('releasemic',self)
+        self.emit('rel-mic',client=self)
 
         pass
     def onPing(self,msg):

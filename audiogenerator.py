@@ -8,12 +8,12 @@ class AudioPacketGenerator:
             raise RuntimeError('Invalid speaker uid')
         self.uid = uid
         self.seq = random.randint(0,65536)
-        self.ts = random.randint()
-        self.data = bytearray(102)
+        self.ts = random.randint(0,65536)
+        self.data = bytes(bytearray(102))
 
     def reset(self):
         self.seq = random.randint(0,65536)
-        self.ts = random.randint()
+        self.ts = random.randint(0,65536)
 
     def next(self):
         self.seq = (self.seq + 1) % 65536

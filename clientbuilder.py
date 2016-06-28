@@ -52,8 +52,13 @@ class ClientBuilder:
     def onClientStuck(self,client):
         raise RuntimeError('Client Stuck,check configure and env')
 
-    def onLogined(self,client):
+    def onLogined(self,*args,**kwargs):
         logging.debug('client logined')
+        client = None
+        if len(args) > 0:
+            client = args[0]
+        else:
+            client = kwargs['client']
         if self.options.get('ingroup',False):
             gid = client.defaultGroup()
             if gid is None or gid == 0:
@@ -63,8 +68,13 @@ class ClientBuilder:
         else:
             self.product(client)
 
-    def product(self,client):
+    def product(self,*args,**kwargs):
         logging.debug('product client')
+        client = None
+        if len(args) > 0:
+            client = args[0]
+        else:
+            client = kwargs['client']
         client.remove_listener('stuck',self.onClientStuck)
         del self.clients[ client.key() ]
         self.callback(client)

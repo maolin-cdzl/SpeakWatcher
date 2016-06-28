@@ -61,7 +61,7 @@ def RequestMic(sock,gid):
     sock.send(packet)
 
 
-def ReleaseMic(sock):
+def ReleaseMic(sock,gid):
     msg = ptt.rr_pb2.ReleaseMic()
     msg.gid = gid
     packet = etpacket.pack(msg)
@@ -76,32 +76,32 @@ def HeartBeat(sock):
 
 def Ping(sock):
     msg = ptt.net_pb2.Ping()
-    packet = etpacket.pack()
+    packet = etpacket.pack(msg)
     sock.send(packet)
 
 def Pong(sock):
     msg = ptt.net_pb2.Pong()
-    packet = etpacket.pack()
+    packet = etpacket.pack(msg)
     sock.send(packet)
 
 def UdpHeartBeat(sock,address,uid,gid):
     msg = ptt.net_pb2.HeartBeat()
     msg.gid = gid
     msg.uid = uid
-    packet = etpacket.rtp_pack(103,0,0,uid,etpacket.pack(msg))
+    packet = etpacket.rtp_pack(100,0,0,uid,etpacket.pack(msg))
     sock.sendto(packet,address)
 
 def UdpPing(sock,address,uid,gid):
     msg = ptt.net_pb2.Ping()
     msg.uid = uid
     msg.gid = gid
-    packet = etpacket.rtp_pack(103,0,0,uid,etpacket.pack(msg))
+    packet = etpacket.rtp_pack(100,0,0,uid,etpacket.pack(msg))
     sock.sendto(packet,address)
 
 def UdpPong(sock,address,uid,gid):
     msg = ptt.net_pb2.Pong()
     msg.uid = uid
     msg.gid = gid
-    packet = etpacket.rtp_pack(103,0,0,uid,etpacket.pack(msg))
+    packet = etpacket.rtp_pack(100,0,0,uid,etpacket.pack(msg))
     sock.sendto(packet,address)
 
