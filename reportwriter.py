@@ -2,6 +2,7 @@
 
 import logging
 import threading
+import datetime
 import Queue
 from statdata import StatData
 
@@ -23,6 +24,7 @@ class ReportWriter(threading.Thread):
 
     def write(self,report):
         with open(self.freport,'a') as f:
+            f.write('%s\n' % datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
             f.write('lost: %d\n' % report.lost_count)
             f.write('Request Mic Reply\n')
             for (k,v) in report.rep_map.items():
@@ -41,7 +43,7 @@ class ReportWriter(threading.Thread):
         if report.period_ap_count > 0:
             avg = report.period_ap_sum / report.period_ap_count
         with open(self.fperiod,'a') as f:
-            f.write('%d\t%d\t%d\n' % (report.period_ap_count, avg, report.period_ap_max))
+            f.write('%s\t%d\t%d\t%d\n' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),report.period_ap_count, avg, report.period_ap_max))
             f.close()
 
     def report(self,data):

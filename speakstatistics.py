@@ -37,15 +37,12 @@ class SpeakStatistics:
         self.callback(rp)
 
     def onReqMic(self,*args,**kwargs):
-        logging.debug('onReqMic')
         self.tv_req = current_millis()
 
     def onGotMic(self,*args,**kwargs):
-        logging.debug('onGotMic')
         self.stat.rep( current_millis() - self.tv_req )
 
     def onSendAp(self,*args,**kwargs):
-        logging.debug('onSendAp')
         seq = kwargs['seq']
         if seq is None:
             raise RuntimeError('send-ap event has no seq')
@@ -57,11 +54,9 @@ class SpeakStatistics:
             self.stat.lost()
 
     def onStartListen(self,*args,**kwargs):
-        logging.debug('onStartListen')
         self.stat.notify( current_millis() - self.tv_req )
 
     def onRecvAp(self,*args,**kwargs):
-        logging.debug('onRecvAp')
         seq = kwargs['seq']
         if seq is None:
             raise RuntimeError('recv-ap event has no seq')

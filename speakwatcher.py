@@ -1,18 +1,13 @@
 # -*- coding: UTF-8 -*-
 
-import os
 import logging
 from logging import Formatter
-from logging.handlers import TimedRotatingFileHandler
 import signal
 import pyev
 from clientbuilder import ClientBuilder
 from speakloop import SpeakLoop
 from speakstatistics import SpeakStatistics
 from reportwriter import ReportWriter
-
-gDEBUG = True
-CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 class SpeakerWatcher:
     def __init__(self):
@@ -21,16 +16,18 @@ class SpeakerWatcher:
         self.listener = None
         self.sploop = None
         self.statis = None
-        self.writer = ReportWriter(CURRENT_PATH)
+        self.writer = None
 
     def sig_cb(self,watcher,revents):
         watcher.loop.stop(pyev.EVBREAK_ALL)
         self.writer.stop()
 
-    def start(self):
-        self.loop = pyev.default_loop(debug=gDEBUG)
+    def start(self,path,debug):
+        self.loop = pyev.default_loop(debug=debug)
         sig = self.loop.signal(signal.SIGINT,self.sig_cb)
         sig.start()
+
+        self.writer = ReportWriter(path)
         self.writer.start()
 
         #'16805400212','16805400213','16805400214','16805400215','16805400216','16805400217','16805400218','16805400219','16805400220']
@@ -70,25 +67,3 @@ class SpeakerWatcher:
 
 
 
-def SetupLogger():
-    FORMAT = "%(asctime)-15s %(levelname)-8s %(message)s"
-    formatter = Formatter(fmt=FORMAT)
-    logger = logging.getLogger()
-    handler = TimedRotatingFileHandler('./speak.log',when="d",interval=1,backupCount=7)
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-
-    if gDEBUG:
-        console = logging.StreamHandler()
-        console.setFormatter(formatter)
-        logger.addHandler(console)
-
-        logger.setLevel(logging.DEBUG)
-    else:
-        logger.setLevel(logging.INFO)
-
-
-if __name__ == '__main__':
-    SetupLogger()
-    watcher = SpeakerWatcher()
-    watcher.start()
