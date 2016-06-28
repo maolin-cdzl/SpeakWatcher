@@ -24,8 +24,10 @@ class SpeakerWatcher:
 
     def start(self,path,debug):
         self.loop = pyev.default_loop(debug=debug)
-        sig = self.loop.signal(signal.SIGINT,self.sig_cb)
-        sig.start()
+        sig_int = self.loop.signal(signal.SIGINT,self.sig_cb)
+        sig_int.start()
+        sig_term = self.loop.signal(signal.SIGTERM,self.sig_cb)
+        sig_term.start()
 
         self.writer = ReportWriter(path)
         self.writer.start()

@@ -27,16 +27,16 @@ class ReportWriter(threading.Thread):
             f.write('%s\n' % datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
             f.write('lost: %d\n' % report.lost_count)
             f.write('Request Mic Reply\n')
-            for (k,v) in report.rep_map.items():
-                f.write('%d\t%d\n' % (k,v))
+            for k in sorted(report.rep_map):
+                f.write('%d\t%d\n' % (k,report.rep_map[k]))
 
             f.write('Member Speaking Notify\n')
-            for (k,v) in report.notify_map.items():
-                f.write('%d\t%d\n' % (k,v))
+            for k in sorted(report.notify_map):
+                f.write('%d\t%d\n' % (k,report.notify_map[k]))
 
             f.write('AudioPacket transaction\n')
-            for (k,v) in report.ap_map.items():
-                f.write('%d\t%d\n' % (k,v))
+            for k in sorted(report.ap_map):
+                f.write('%d\t%d\n' % (k,report.ap_map[k]))
             f.close()
 
         avg = 0
