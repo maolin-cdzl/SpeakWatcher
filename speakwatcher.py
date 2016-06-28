@@ -1,9 +1,12 @@
+# -*- coding: UTF-8 -*-
+
 import logging
 from logging import Formatter
 from logging.handlers import TimedRotatingFileHandler
 import signal
 import pyev
 from clientbuilder import ClientBuilder
+from speakloop import SpeakLoop
 
 def sig_cb(watcher,revents):
     watcher.loop.stop(pyev.EVBREAK_ALL)
@@ -11,19 +14,19 @@ def sig_cb(watcher,revents):
 class SpeakerWatcher:
     def __init__(self):
         self.loop = None 
-        self.watchers = []
         self.speaker = None
         self.listener = None
+        self.sploop = None
 
     def start():
         self.loop = pyev.default_loop(debug=True)
         sig = self.loop.signal(signal.SIGINT, sig_cb)
         sig.start()
-        self.watchers.append(sig)
 
         accounts = [('16805400210','1'),('16805400211','1')] #'16805400212','16805400213','16805400214','16805400215','16805400216','16805400217','16805400218','16805400219','16805400220']
         options = {
-                'address': ('119.254.211.165',10000),
+                #'address': ('119.254.211.165',10000),
+                'address': ('192.168.2.13',10008),
                 'ingroup': True
         }
 
@@ -45,9 +48,7 @@ class SpeakerWatcher:
         else:
             raise RuntimeError('Too many clients')
         
-        timer = self.io.timer(,0,self.onSpeakTimer)
-        timer.start()
-        self.watchers.append(timer)
+        self.sploop = SpeakLoop(self.loop,self.speaker)
 
 
 

@@ -97,10 +97,16 @@ class Client(EventEmitter):
         paytype,seq,ts,ssrc,pay = etpacket.rtp_unpack(packet)
 
         if paytype == 103:
-            self.emit('rtp',self,(paytype,seq,ts,ssrc,pay))
+            self.emit('recv-ap',self,(paytype,seq,ts,ssrc,pay))
 
     def key(self):
         return self.tcp.fileno()
+
+    def userId(self):
+        if self.user is not None:
+            return self.user['uid']
+        else:
+            return 0
 
     def defaultGroup(self):
         if self.user is not None:
@@ -108,7 +114,16 @@ class Client(EventEmitter):
         else:
             return 0
 
-    def currentGroup(self):
+    def currentGid(self):
+        if self.group is not None:
+            return self.group['gid']
+        else:
+            return 0
+
+    def isSpeaking(self):
+        return self.speak_status == STATUS_SPEAKING
+
+    def currentGroupId(self):
         if self.online_status == STATUS_INGROUP:
             return self.group['gid']
         else:
@@ -164,10 +179,9 @@ class Client(EventEmitter):
         self.udp = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.udp_io = self.loop.io(self.udp,pyev.EV_READ,self.onUdpReadable)
         self.udp_io.start()
-        self.udp_timer = self.loop.timer(5.0,0,self.onUdpTimer)
+        self.udp_timer = self.loop.timer(0.01,5.0,self.onUdpTimer)
         self.udp_timer.start()
 
-        command.UdpHeartBeat(self.udp,self.group['address'],self.user['uid'],self.group['gid'])
         self.emit('join',self)
     
     def onLeaveGroup(self,msg):
@@ -202,6 +216,8 @@ class Client(EventEmitter):
         if msg.result == 0:
             self.speak_status = STATUS_SPEAKING
             self.emit('gotmic',self)
+        else:
+            self.emit('mic-fail',self)
 
     def onReleaseMic(self,msg):
         self.speak_status = STATUS_IDLE
