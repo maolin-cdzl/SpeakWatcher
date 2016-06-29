@@ -173,12 +173,24 @@ class Client(EventEmitter):
         if msg.result != 0:
             self.stuck()
             return
-        ip = socket.inet_ntoa(struct.pack('!I',msg.group.ip))
-        port = msg.group.port
-        if self.hack_group_ip:
-            self.group = { 'gid': msg.group.gid, 'address': ('127.0.0.1',port)}
+        if msg.has_group:
+            gid = msg.group.gid
+            ip = socket.inet_ntoa(struct.pack('!I',msg.group.ip))
+            port = msg.group.port
         else:
-            self.group = { 'gid': msg.group.gid, 'address': (ip,port)}
+            gid = msg.gid
+            if msg.has_ip:
+                ip = socket.inet_ntoa(struct.pack('!I',msg.ip))
+            if msg.has_port:
+                port = msg.port
+
+        if gid == 0 or ip == 0 or port == 0:
+            raise RuntimeError('Can not found group info')
+
+        if self.hack_group_ip is not None:
+            ip = self.hack_group_ip
+
+        self.group = { 'gid': gid, 'address': (ip,port)}
         logging.debug('group: %s' % str(self.group))
 
         self.udp = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
