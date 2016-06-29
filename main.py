@@ -44,7 +44,7 @@ class App:
 #   required: account tuple list
 #   optional: builder_join_group True/False default: False
 #   optional: builder_parallel int default: 100
-#   optional: hack_group_ip True/False default: False
+#   optional: hack_group_ip ip string or None
 #   optional: debug default False
 
 # avalid account:
@@ -59,7 +59,7 @@ options = {
     'address': ('127.0.0.1',10000),
     'accounts': [('18900010004','1'),('18900010005','1')], 
     'builder_join_group': True,
-    'hack_group_ip': True
+    'hack_group_ip': '127.0.0.1'
 }
 
 if __name__ == '__main__':

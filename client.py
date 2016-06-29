@@ -19,7 +19,7 @@ STATUS_LISTENING            = 1
 STATUS_SPEAKING             = 2
 
 class Client(EventEmitter):
-    def __init__(self,loop,sock,account,password,hackGroupIP=False):
+    def __init__(self,loop,sock,account,password,hackGroupIP=None):
         super(Client,self).__init__()
         self.procmap = {
             'ptt.rr.LoginAck':          self.onLogin,
@@ -175,8 +175,8 @@ class Client(EventEmitter):
             return
         ip = socket.inet_ntoa(struct.pack('!I',msg.group.ip))
         port = msg.group.port
-        if self.hack_group_ip:
-            self.group = { 'gid': msg.group.gid, 'address': ('127.0.0.1',port)}
+        if self.hack_group_ip is not None:
+            self.group = { 'gid': msg.group.gid, 'address': (self.hack_group_ip,port)}
         else:
             self.group = { 'gid': msg.group.gid, 'address': (ip,port)}
         logging.debug('group: %s' % str(self.group))
