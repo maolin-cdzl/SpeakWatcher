@@ -19,7 +19,7 @@ STATUS_LISTENING            = 1
 STATUS_SPEAKING             = 2
 
 class Client(EventEmitter):
-    def __init__(self,loop,sock,account,password):
+    def __init__(self,loop,sock,account,password,hackGroupIP=False):
         super(Client,self).__init__()
         self.procmap = {
             'ptt.rr.LoginAck':          self.onLogin,
@@ -33,6 +33,7 @@ class Client(EventEmitter):
             'ptt.rr.ReleaseMicAck':     self.onReleaseMic,
             'ptt.net.Ping':             self.onPing,
         }
+        self.hack_group_ip = hackGroupIP
         self.loop = loop
         self.online_status = STATUS_OFFLINE
         self.speak_status = STATUS_IDLE
@@ -79,6 +80,9 @@ class Client(EventEmitter):
     def onTcpReadable(self,watcher,revent):
         if revent & pyev.EV_READ:
             data = self.tcp.recv(1024)
+            if len(data) == 0:
+                raise RuntimeError('Connection broken')
+
             if data is not None and len(data) > 0:
                 self.recv_buf += data
 
@@ -171,7 +175,12 @@ class Client(EventEmitter):
             return
         ip = socket.inet_ntoa(struct.pack('!I',msg.group.ip))
         port = msg.group.port
-        self.group = { 'gid': msg.group.gid, 'address': (ip,port)}
+        if self.hack_group_ip:
+            self.group = { 'gid': msg.group.gid, 'address': ('127.0.0.1',port)}
+        else:
+            self.group = { 'gid': msg.group.gid, 'address': (ip,port)}
+        logging.debug('group: %s' % str(self.group))
+
         self.udp = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.udp_io = self.loop.io(self.udp,pyev.EV_READ,self.onUdpReadable)
         self.udp_io.start()
@@ -217,7 +226,7 @@ class Client(EventEmitter):
 
     def onReleaseMic(self,msg):
         self.speak_status = STATUS_IDLE
-        self.emit('rel-mic',client=self)
+        self.emit('on-rel-mic',client=self)
 
         pass
     def onPing(self,msg):

@@ -5,10 +5,6 @@ import socket
 import pyev
 from client import Client
 
-# options: 
-#   required: address ('1.2.3.4',100)
-#   optional: ingroup True/False default: False
-#   optional: parallel int default: 100
 
 class ClientBuilder:
     def __init__(self,accounts,options,callback):
@@ -21,7 +17,7 @@ class ClientBuilder:
 
     def start(self,loop):
         self.loop = loop
-        parallel = self.options.get('parallel',100)
+        parallel = self.options.get('builder_parallel',100)
 
         for i in range(0, min(parallel,len(self.accounts)) ):
             self.createConnection()
@@ -44,7 +40,7 @@ class ClientBuilder:
         if pyev.EV_WRITE & revent:
             account,password = self.accounts.pop()
             logging.debug('connection connected')
-            client = Client(self.loop,sock,account,password)
+            client = Client(self.loop,sock,account,password,self.options.get('hack_group_ip',False))
             client.on('stuck',self.onClientStuck)
             client.once('login',self.onLogined)
             self.clients[client.key()] = client
@@ -59,7 +55,7 @@ class ClientBuilder:
             client = args[0]
         else:
             client = kwargs['client']
-        if self.options.get('ingroup',False):
+        if self.options.get('builder_join_group',False):
             gid = client.defaultGroup()
             if gid is None or gid == 0:
                 raise RuntimeError('Client has no default group')

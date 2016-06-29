@@ -10,7 +10,8 @@ from speakstatistics import SpeakStatistics
 from reportwriter import ReportWriter
 
 class SpeakerWatcher:
-    def __init__(self):
+    def __init__(self,options):
+        self.options = options
         self.loop = None 
         self.speaker = None
         self.listener = None
@@ -19,33 +20,41 @@ class SpeakerWatcher:
         self.writer = None
 
     def sig_cb(self,watcher,revents):
+        logging.info('signal: %d' % revents)
         watcher.loop.stop(pyev.EVBREAK_ALL)
         self.writer.stop()
 
-    def start(self,path,debug):
-        self.loop = pyev.default_loop(debug=debug)
-        sig_int = self.loop.signal(signal.SIGINT,self.sig_cb)
-        sig_int.start()
-        sig_term = self.loop.signal(signal.SIGTERM,self.sig_cb)
-        sig_term.start()
+    def start(self):
+        try:
+            self.loop = pyev.default_loop(debug=self.options.get('debug',False))
+            sig_int = self.loop.signal(signal.SIGINT,self.sig_cb)
+            sig_int.start()
+            sig_term = self.loop.signal(signal.SIGTERM,self.sig_cb)
+            sig_term.start()
 
-        self.writer = ReportWriter(path)
-        self.writer.start()
+            self.writer = ReportWriter(self.options.get('root_path'))
+            self.writer.start()
 
-        #'16805400212','16805400213','16805400214','16805400215','16805400216','16805400217','16805400218','16805400219','16805400220']
-        # accounts = [('16805400210','1'),('16805400211','1')] 
-        accounts = [('16805400212','1'),('16805400213','1')] 
-        options = {
-                'address': ('119.254.211.165',10000),
-                #'address': ('192.168.2.13',10008),
-                'ingroup': True
-        }
+            accounts = []
+            for a in self.options.get('accounts'):
+                accounts.append(a)
 
-        builder = ClientBuilder(accounts,options,self.addClient)
+            builder = ClientBuilder(accounts,self.options,self.addClient)
+            builder.start(self.loop)
 
-        builder.start(self.loop)
+            self.loop.start()
+        finally:
+            if self.loop is not None:
+                self.loop.stop(pyev.EVBREAK_ALL)
+                self.loop = None
+            self.builder = None
+            self.sploop = None
+            self.statis = None
+            if self.writer is not None:
+                self.writer.stop()
+                self.writer = None
 
-        self.loop.start()
+
 
     def addClient(self,client):
         if self.speaker is None:
