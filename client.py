@@ -173,18 +173,19 @@ class Client(EventEmitter):
         if msg.result != 0:
             self.stuck()
             return
-        if msg.has_group:
+        if msg.HasField('group'):
+            logging.debug('JoinGroupAck has group: %s' % str(msg.group))
             gid = msg.group.gid
             ip = socket.inet_ntoa(struct.pack('!I',msg.group.ip))
             port = msg.group.port
         else:
             gid = msg.gid
-            if msg.has_ip:
+            if msg.HasField('ip'):
                 ip = socket.inet_ntoa(struct.pack('!I',msg.ip))
-            if msg.has_port:
+            if msg.HasField('port'):
                 port = msg.port
 
-        if gid == 0 or ip == 0 or port == 0:
+        if gid is None or ip is None or port is None:
             raise RuntimeError('Can not found group info')
 
         if self.hack_group_ip is not None:

@@ -53,13 +53,13 @@ class App:
 
 options = {
     'root_path': os.path.dirname(os.path.abspath(__file__)),
-    'debug': False,
+    'debug': True,
     #'address': ('192.168.2.13',10008),
     #'address': ('119.254.211.165',10000),
-    'address': ('127.0.0.1',10000),
+    'address': ('219.148.21.125',10002),
     'accounts': [('18900010004','1'),('18900010005','1')], 
     'builder_join_group': True,
-    'hack_group_ip': '127.0.0.1'
+    #'hack_group_ip': '127.0.0.1'
 }
 
 if __name__ == '__main__':
