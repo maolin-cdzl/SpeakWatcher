@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import ptt_pb2 as ptt__pb2
+import ptt_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='push.proto',
   package='ptt.push',
-  syntax='proto2',
   serialized_pb=_b('\n\npush.proto\x12\x08ptt.push\x1a\tptt.proto\",\n\x0cReconfigured\x12\x1c\n\x04\x63onf\x18\x01 \x01(\x0b\x32\x0e.ptt.Configure\"(\n\x0cUsersChanged\x12\x18\n\x05users\x18\x01 \x03(\x0b\x32\t.ptt.User\"L\n\x10GroupListChanged\x12!\n\rupdate_groups\x18\x01 \x03(\x0b\x32\n.ptt.Group\x12\x15\n\trm_groups\x18\x02 \x03(\rB\x02\x10\x01\"\xd9\x01\n\x0eMembersChanged\x12\x37\n\x07\x63hanges\x18\x01 \x03(\x0b\x32&.ptt.push.MembersChanged.MemberChanged\x1a\x8d\x01\n\rMemberChanged\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x1a\n\x0ejoined_members\x18\x02 \x03(\rB\x02\x10\x01\x12\x18\n\x0cleft_members\x18\x03 \x03(\rB\x02\x10\x01\x12!\n\x0eupdate_members\x18\x04 \x03(\x0b\x32\t.ptt.User\x12\x16\n\nrm_members\x18\x05 \x03(\rB\x02\x10\x01\"}\n\x10\x43ontactshipAsked\x12\x34\n\x08requests\x18\x01 \x03(\x0b\x32\".ptt.push.ContactshipAsked.Request\x1a\x33\n\x07Request\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0c\n\x04text\x18\x02 \x01(\t\x12\r\n\x05uname\x18\x03 \x01(\t\"N\n\x0f\x43ontactsChanged\x12\"\n\x0fupdate_contacts\x18\x01 \x03(\x0b\x32\t.ptt.User\x12\x17\n\x0brm_contacts\x18\x02 \x03(\rB\x02\x10\x01\"(\n\x0cMemberGetMic\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0b\n\x03uid\x18\x02 \x02(\r\")\n\rMemberLostMic\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0b\n\x03uid\x18\x02 \x02(\r\"&\n\x07LostMic\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0e\n\x06reason\x18\x02 \x01(\t\"u\n\x0c\x43urrentGroup\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0e\n\x06reason\x18\x02 \x01(\t\x12\r\n\x02ip\x18\x03 \x01(\r:\x01\x30\x12\x0f\n\x04port\x18\x04 \x01(\r:\x01\x30\x12\r\n\x05gname\x18\x05 \x01(\t\x12\x19\n\x05group\x18\x06 \x01(\x0b\x32\n.ptt.Group\"\x19\n\x07Kickout\x12\x0e\n\x06reason\x18\x01 \x01(\t\"2\n\x0cNewWorksheet\x12\"\n\nworksheets\x18\x01 \x03(\x0b\x32\x0e.ptt.Worksheet\"I\n\x0f\x43ustomBroadcast\x12\x17\n\x04\x66rom\x18\x01 \x01(\x0b\x32\t.ptt.User\x12\x10\n\x08msg_name\x18\x02 \x02(\t\x12\x0b\n\x03msg\x18\x03 \x01(\x0c\"\x1f\n\x0b\x43hangeRoles\x12\x10\n\x05roles\x18\x01 \x02(\r:\x01\x30\x42\x1d\n\x1b\x63om.shanlitech.ptt.protocol')
   ,
-  dependencies=[ptt__pb2.DESCRIPTOR,])
+  dependencies=[ptt_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -50,7 +49,6 @@ _RECONFIGURED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -81,7 +79,6 @@ _USERSCHANGED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -119,7 +116,6 @@ _GROUPLISTCHANGED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -178,7 +174,6 @@ _MEMBERSCHANGED_MEMBERCHANGED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -208,7 +203,6 @@ _MEMBERSCHANGED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -253,7 +247,6 @@ _CONTACTSHIPASKED_REQUEST = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -283,7 +276,6 @@ _CONTACTSHIPASKED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -321,7 +313,6 @@ _CONTACTSCHANGED = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -359,7 +350,6 @@ _MEMBERGETMIC = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -397,7 +387,6 @@ _MEMBERLOSTMIC = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -435,7 +424,6 @@ _LOSTMIC = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -501,7 +489,6 @@ _CURRENTGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -532,7 +519,6 @@ _KICKOUT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -563,7 +549,6 @@ _NEWWORKSHEET = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -608,7 +593,6 @@ _CUSTOMBROADCAST = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -639,7 +623,6 @@ _CHANGEROLES = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -647,18 +630,18 @@ _CHANGEROLES = _descriptor.Descriptor(
   serialized_end=1057,
 )
 
-_RECONFIGURED.fields_by_name['conf'].message_type = ptt__pb2._CONFIGURE
-_USERSCHANGED.fields_by_name['users'].message_type = ptt__pb2._USER
-_GROUPLISTCHANGED.fields_by_name['update_groups'].message_type = ptt__pb2._GROUP
-_MEMBERSCHANGED_MEMBERCHANGED.fields_by_name['update_members'].message_type = ptt__pb2._USER
+_RECONFIGURED.fields_by_name['conf'].message_type = ptt_pb2._CONFIGURE
+_USERSCHANGED.fields_by_name['users'].message_type = ptt_pb2._USER
+_GROUPLISTCHANGED.fields_by_name['update_groups'].message_type = ptt_pb2._GROUP
+_MEMBERSCHANGED_MEMBERCHANGED.fields_by_name['update_members'].message_type = ptt_pb2._USER
 _MEMBERSCHANGED_MEMBERCHANGED.containing_type = _MEMBERSCHANGED
 _MEMBERSCHANGED.fields_by_name['changes'].message_type = _MEMBERSCHANGED_MEMBERCHANGED
 _CONTACTSHIPASKED_REQUEST.containing_type = _CONTACTSHIPASKED
 _CONTACTSHIPASKED.fields_by_name['requests'].message_type = _CONTACTSHIPASKED_REQUEST
-_CONTACTSCHANGED.fields_by_name['update_contacts'].message_type = ptt__pb2._USER
-_CURRENTGROUP.fields_by_name['group'].message_type = ptt__pb2._GROUP
-_NEWWORKSHEET.fields_by_name['worksheets'].message_type = ptt__pb2._WORKSHEET
-_CUSTOMBROADCAST.fields_by_name['from'].message_type = ptt__pb2._USER
+_CONTACTSCHANGED.fields_by_name['update_contacts'].message_type = ptt_pb2._USER
+_CURRENTGROUP.fields_by_name['group'].message_type = ptt_pb2._GROUP
+_NEWWORKSHEET.fields_by_name['worksheets'].message_type = ptt_pb2._WORKSHEET
+_CUSTOMBROADCAST.fields_by_name['from'].message_type = ptt_pb2._USER
 DESCRIPTOR.message_types_by_name['Reconfigured'] = _RECONFIGURED
 DESCRIPTOR.message_types_by_name['UsersChanged'] = _USERSCHANGED
 DESCRIPTOR.message_types_by_name['GroupListChanged'] = _GROUPLISTCHANGED

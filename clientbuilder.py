@@ -40,7 +40,7 @@ class ClientBuilder:
         if pyev.EV_WRITE & revent:
             account,password = self.accounts.pop()
             logging.debug('connection connected')
-            client = Client(self.loop,sock,account,password,self.options.get('hack_group_ip',False))
+            client = Client(self.loop,sock,account,password,self.options.get('hack_group_ip',None))
             client.on('stuck',self.onClientStuck)
             client.once('login',self.onLogined)
             self.clients[client.key()] = client

@@ -19,7 +19,7 @@ STATUS_LISTENING            = 1
 STATUS_SPEAKING             = 2
 
 class Client(EventEmitter):
-    def __init__(self,loop,sock,account,password,hackGroupIP=False):
+    def __init__(self,loop,sock,account,password,hackGroupIP=None):
         super(Client,self).__init__()
         self.procmap = {
             'ptt.rr.LoginAck':          self.onLogin,

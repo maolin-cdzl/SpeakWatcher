@@ -18,7 +18,6 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ptt.proto',
   package='ptt',
-  syntax='proto2',
   serialized_pb=_b('\n\tptt.proto\x12\x03ptt\"5\n\tAgentInfo\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\x0e\n\x06prefix\x18\x03 \x01(\t\"F\n\x0b\x43ompanyInfo\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\x1d\n\x05\x61gent\x18\x64 \x01(\x0b\x32\x0e.ptt.AgentInfo\"\xa9\x01\n\x08UserInfo\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\x0f\n\x04role\x18\x03 \x01(\x05:\x01\x30\x12\x15\n\x06online\x18\x04 \x01(\x08:\x05\x66\x61lse\x12\x1b\n\raudio_enabled\x18\x05 \x01(\x08:\x04true\x12\x1a\n\x0blocation_on\x18\x06 \x01(\x08:\x05\x66\x61lse\x12!\n\x07\x63ompany\x18\x64 \x01(\x0b\x32\x10.ptt.CompanyInfo\"\xe8\x01\n\x04User\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x15\n\x06online\x18\x04 \x01(\x08:\x05\x66\x61lse\x12\x1b\n\raudio_enabled\x18\x05 \x01(\x08:\x04true\x12\x14\n\x05sleep\x18\x06 \x01(\x08:\x05\x66\x61lse\x12\x12\n\x03\x64nd\x18\x07 \x01(\x08:\x05\x66\x61lse\x12\x0f\n\x04role\x18\x08 \x01(\x05:\x01\x30\x12\x15\n\ndepartment\x18\t \x01(\r:\x01\x30\x12\x13\n\x0blocation_on\x18\n \x01(\x08\x12\x17\n\x0flocation_period\x18\x0b \x01(\r\"A\n\x06Member\x12\x17\n\x04user\x18\x01 \x01(\x0b\x32\t.ptt.User\x12\x0f\n\x07ingroup\x18\x02 \x01(\x08\x12\r\n\x05prior\x18\x03 \x01(\x05\"H\n\x08\x43hatUser\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x16\n\x0e\x65xpect_payload\x18\x02 \x01(\r\x12\x17\n\x0f\x61\x63\x63\x65pt_payloads\x18\x03 \x03(\r\"\xbb\x01\n\x05Group\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12+\n\x04type\x18\x04 \x01(\x0e\x32\x14.ptt.Group.GroupType:\x07\x42UILTIN\x12\r\n\x05prior\x18\x05 \x01(\x05\x12\n\n\x02ip\x18\x06 \x01(\r\x12\x0c\n\x04port\x18\x07 \x01(\r\".\n\tGroupType\x12\x0b\n\x07\x42UILTIN\x10\x00\x12\n\n\x06STATIC\x10\x01\x12\x08\n\x04TEMP\x10\x02\"\\\n\x0cGroupMembers\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x10\n\x08ingroups\x18\x02 \x03(\r\x12\x11\n\toutgroups\x18\x03 \x03(\r\x12\x1a\n\x07members\x18\x04 \x03(\x0b\x32\t.ptt.User\"i\n\rGroupMembers2\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x1c\n\x07members\x18\x02 \x03(\x0b\x32\x0b.ptt.Member\x12\r\n\x05total\x18\x03 \x01(\r\x12\x10\n\x08page_num\x18\x04 \x01(\r\x12\x0c\n\x04page\x18\x05 \x01(\r\"\x97\x01\n\nDepartment\x12\x0b\n\x03\x64id\x18\x01 \x02(\r\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12(\n\x0fsub_departments\x18\x04 \x03(\x0b\x32\x0f.ptt.Department\x12\x1f\n\x0b\x63hat_groups\x18\x05 \x03(\x0b\x32\n.ptt.Group\x12\x10\n\x05super\x18\x06 \x01(\r:\x01\x30\"<\n\x11\x44\x65partmentMembers\x12\x0b\n\x03\x64id\x18\x01 \x02(\r\x12\x1a\n\x07members\x18\x02 \x03(\x0b\x32\t.ptt.User\"1\n\nCoordinate\x12\x11\n\tlongitude\x18\x01 \x02(\x01\x12\x10\n\x08latitude\x18\x02 \x02(\x01\"\xd5\x01\n\x08Location\x12#\n\ncoordinate\x18\x01 \x02(\x0b\x32\x0f.ptt.Coordinate\x12\'\n\x04type\x18\x02 \x01(\x0e\x32\x12.ptt.Location.Type:\x05WGS84\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\t\x12\x1f\n\x08\x64\x61tetime\x18\x04 \x01(\x0b\x32\r.ptt.DateTime\x12\r\n\x05speed\x18\x05 \x01(\x01\":\n\x04Type\x12\t\n\x05WGS84\x10\x01\x12\t\n\x05GCJ02\x10\x02\x12\x08\n\x04XA80\x10\x03\x12\x08\n\x04\x42G54\x10\x04\x12\x08\n\x04\x42\x44\x30\x39\x10\x05\"\xd3\x02\n\tConfigure\x12\x15\n\rdefault_group\x18\x01 \x01(\r\x12\x1e\n\x16location_report_period\x18\x02 \x01(\r\x12\x15\n\raudio_enabled\x18\x03 \x01(\x08\x12\x17\n\x0fswitch_location\x18\x04 \x01(\x08\x12\x14\n\x0ctone_quality\x18\x05 \x01(\x05\x12\x12\n\nsms_center\x18\x06 \x03(\t\x12\x18\n\rlocation_mode\x18\x07 \x01(\x05:\x01\x30\x12&\n\x12\x64\x65\x66\x61ult_watchgroup\x18\x08 \x03(\x0b\x32\n.ptt.Group\x12&\n\x12\x64\x65\x66\x61ult_group_info\x18\t \x01(\x0b\x32\n.ptt.Group\x12!\n\x12multigroup_enabled\x18\n \x01(\x08:\x05\x66\x61lse\x12(\n\x19\x65xt_member_status_enabled\x18\x0b \x01(\x08:\x05\x66\x61lse\"5\n\tMediaFile\x12\x0c\n\x04mime\x18\x01 \x02(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"l\n\tWorksheet\x12\r\n\x05phone\x18\x01 \x01(\t\x12\x17\n\x0f\x63urrent_address\x18\x02 \x01(\t\x12\x13\n\x0b\x63reate_time\x18\x03 \x01(\t\x12\"\n\nmedia_file\x18\x04 \x01(\x0b\x32\x0e.ptt.MediaFile\"w\n\x08\x44\x61teTime\x12\x0c\n\x04year\x18\x01 \x02(\r\x12\r\n\x05month\x18\x02 \x02(\r\x12\x0b\n\x03\x64\x61y\x18\x03 \x02(\r\x12\x0c\n\x04hour\x18\x04 \x02(\r\x12\x0e\n\x06minute\x18\x05 \x02(\r\x12\x0e\n\x06second\x18\x06 \x02(\r\x12\x13\n\x0bmillisecond\x18\x07 \x01(\r\"R\n\nSystemInfo\x12\n\n\x02os\x18\x01 \x02(\t\x12\x0b\n\x03\x65sn\x18\x02 \x01(\t\x12\x0c\n\x04meid\x18\x03 \x01(\t\x12\x0c\n\x04imei\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontext\x18\x05 \x01(\t\"B\n\x0eMobileCardInfo\x12\x10\n\x08operator\x18\x01 \x01(\t\x12\x0c\n\x04imsi\x18\x02 \x01(\t\x12\x10\n\x08mobileno\x18\x03 \x01(\t\"\"\n\x06Server\x12\n\n\x02ip\x18\x01 \x02(\r\x12\x0c\n\x04port\x18\x02 \x02(\rB\x1d\n\x1b\x63om.shanlitech.ptt.protocol')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -122,7 +121,6 @@ _AGENTINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -167,7 +165,6 @@ _COMPANYINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -240,7 +237,6 @@ _USERINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -341,7 +337,6 @@ _USER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -386,7 +381,6 @@ _MEMBER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -431,7 +425,6 @@ _CHATUSER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -505,7 +498,6 @@ _GROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -557,7 +549,6 @@ _GROUPMEMBERS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -616,7 +607,6 @@ _GROUPMEMBERS2 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -682,7 +672,6 @@ _DEPARTMENT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -720,7 +709,6 @@ _DEPARTMENTMEMBERS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -758,7 +746,6 @@ _COORDINATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -818,7 +805,6 @@ _LOCATION = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -919,7 +905,6 @@ _CONFIGURE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -964,7 +949,6 @@ _MEDIAFILE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1016,7 +1000,6 @@ _WORKSHEET = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1089,7 +1072,6 @@ _DATETIME = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1148,7 +1130,6 @@ _SYSTEMINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1193,7 +1174,6 @@ _MOBILECARDINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1231,7 +1211,6 @@ _SERVER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
