@@ -18,7 +18,6 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='net.proto',
   package='ptt.net',
-  syntax='proto2',
   serialized_pb=_b('\n\tnet.proto\x12\x07ptt.net\";\n\tHeartBeat\x12\x14\n\ttimestamp\x18\x01 \x01(\r:\x01\x30\x12\x0b\n\x03gid\x18\x02 \x01(\r\x12\x0b\n\x03uid\x18\x03 \x01(\r\"6\n\x04Ping\x12\x14\n\ttimestamp\x18\x01 \x01(\r:\x01\x30\x12\x0b\n\x03gid\x18\x02 \x01(\r\x12\x0b\n\x03uid\x18\x03 \x01(\r\"6\n\x04Pong\x12\x14\n\ttimestamp\x18\x01 \x01(\r:\x01\x30\x12\x0b\n\x03gid\x18\x02 \x01(\r\x12\x0b\n\x03uid\x18\x03 \x01(\rB\x1d\n\x1b\x63om.shanlitech.ptt.protocol')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -62,7 +61,6 @@ _HEARTBEAT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -107,7 +105,6 @@ _PING = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -152,7 +149,6 @@ _PONG = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],

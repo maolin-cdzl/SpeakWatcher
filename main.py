@@ -30,7 +30,7 @@ class App:
         self.stdin_path = '/dev/null'
         self.stdout_path = '/dev/null'
         self.stderr_path = '/dev/null'
-        self.pidfile_path = '%s/.speakwatcher.pid' % options.get('root_path')
+        self.pidfile_path = '/tmp/speakwatcher.pid'
         self.pidfile_timeout = 5
         self.svcs = []
 
@@ -54,12 +54,12 @@ class App:
 options = {
     'root_path': os.path.dirname(os.path.abspath(__file__)),
     'debug': False,
-    'address': ('119.254.211.165',10000),
-    'accounts': [('16805400212','1'),('16805400213','1')], 
     #'address': ('192.168.2.13',10008),
+    #'address': ('119.254.211.165',10000),
+    'address': ('127.0.0.1',10000),
+    'accounts': [('16805400212','1'),('16805400213','1')], 
     'builder_join_group': True,
-    'hack_group_ip': False
-
+    'hack_group_ip': True
 }
 
 if __name__ == '__main__':

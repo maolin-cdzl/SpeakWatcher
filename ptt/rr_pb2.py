@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import ptt_pb2 as ptt__pb2
+import ptt_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rr.proto',
   package='ptt.rr',
-  syntax='proto2',
   serialized_pb=_b('\n\x08rr.proto\x12\x06ptt.rr\x1a\tptt.proto\"\xe9\x01\n\x05Login\x12\x0f\n\x07\x61\x63\x63ount\x18\x01 \x02(\t\x12\x10\n\x08password\x18\x02 \x02(\t\x12\x10\n\x05roles\x18\x03 \x01(\r:\x01\x30\x12\x0f\n\x07version\x18\x04 \x01(\x05\x12\x10\n\x08platform\x18\x05 \x01(\t\x12\x0e\n\x06\x64\x65vice\x18\x06 \x01(\t\x12\x1b\n\x0e\x65xpect_payload\x18\x07 \x01(\r:\x03\x31\x30\x31\x12\x17\n\x0f\x61\x63\x63\x65pt_payloads\x18\x08 \x03(\r\x12\x1f\n\x06system\x18\t \x01(\x0b\x32\x0f.ptt.SystemInfo\x12!\n\x04\x63\x61rd\x18\n \x01(\x0b\x32\x13.ptt.MobileCardInfo\"_\n\x08LoginAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x17\n\x04self\x18\x02 \x01(\x0b\x32\t.ptt.User\x12\x1c\n\x04\x63onf\x18\x03 \x01(\x0b\x32\x0e.ptt.Configure\x12\x0c\n\x04what\x18\x04 \x01(\t\"\x08\n\x06Logout\"\x1b\n\tLogoutAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\"\x82\x02\n\nQueryGroup\x12:\n\x06\x64\x65tail\x18\x01 \x01(\x0e\x32\x1e.ptt.rr.QueryGroup.DetailLevel:\nGROUP_INFO\x12\x14\n\ttimestamp\x18\x02 \x01(\r:\x01\x30\x12\x1d\n\x0finclude_builtin\x18\x03 \x01(\x08:\x04true\x12\x1c\n\x0einclude_static\x18\x04 \x01(\x08:\x04true\x12\x1a\n\x0cinclude_temp\x18\x05 \x01(\x08:\x04true\x12\x1d\n\x0finclude_created\x18\x06 \x01(\x08:\x04true\"*\n\x0b\x44\x65tailLevel\x12\x0b\n\x07ONLY_ID\x10\x00\x12\x0e\n\nGROUP_INFO\x10\x01\";\n\rQueryGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1a\n\x06groups\x18\x02 \x03(\x0b\x32\n.ptt.Group\"\xfa\x01\n\x14QueryEnterpriseGroup\x12O\n\x0crange_option\x18\x01 \x01(\x0e\x32(.ptt.rr.QueryEnterpriseGroup.RangeOption:\x0f\x43OMPANY_AS_ROOT\x12\x1d\n\x0finclude_builtin\x18\x02 \x01(\x08:\x04true\x12\x1c\n\x0einclude_static\x18\x03 \x01(\x08:\x04true\"T\n\x0bRangeOption\x12\x13\n\x0f\x43OMPANY_AS_ROOT\x10\x00\x12\x16\n\x12\x44\x45PARTMENT_AS_ROOT\x10\x01\x12\x18\n\x14PARALLEL_DEPARTMENTS\x10\x03\"E\n\x17QueryEnterpriseGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1a\n\x06groups\x18\x02 \x03(\x0b\x32\n.ptt.Group\"\xbc\x01\n\x0cQueryMembers\x12\x10\n\x04gids\x18\x01 \x03(\rB\x02\x10\x01\x12;\n\x06\x64\x65tail\x18\x02 \x01(\x0e\x32 .ptt.rr.QueryMembers.DetailLevel:\tUSER_INFO\x12\x17\n\x08version2\x18\x03 \x01(\x08:\x05\x66\x61lse\x12\x19\n\nallow_page\x18\x04 \x01(\x08:\x05\x66\x61lse\")\n\x0b\x44\x65tailLevel\x12\x0b\n\x07ONLY_ID\x10\x00\x12\r\n\tUSER_INFO\x10\x01\"E\n\x0fQueryMembersAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\"\n\x07members\x18\x02 \x03(\x0b\x32\x11.ptt.GroupMembers\"G\n\x10QueryMembersAck2\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12#\n\x07members\x18\x02 \x03(\x0b\x32\x12.ptt.GroupMembers2\"\xa2\x01\n\rQueryContacts\x12\x38\n\x06\x64\x65tail\x18\x01 \x01(\x0e\x32!.ptt.rr.QueryContacts.DetailLevel:\x05INFOS\x12\x14\n\ttimestamp\x18\x02 \x01(\r:\x01\x30\x12\x1a\n\x0bonly_online\x18\x03 \x01(\x08:\x05\x66\x61lse\"%\n\x0b\x44\x65tailLevel\x12\x0b\n\x07ONLY_ID\x10\x00\x12\t\n\x05INFOS\x10\x01\"<\n\x10QueryContactsAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x18\n\x05users\x18\x02 \x03(\x0b\x32\t.ptt.User\"Q\n\nQueryUsers\x12\x10\n\x04uids\x18\x01 \x03(\rB\x02\x10\x01\x12\x1a\n\x0bonly_online\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\x15\n\ndepartment\x18\x03 \x01(\r:\x01\x30\"l\n\rQueryUsersAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1a\n\x0bonly_online\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\x15\n\ndepartment\x18\x03 \x01(\r:\x01\x30\x12\x18\n\x05users\x18\x04 \x03(\x0b\x32\t.ptt.User\"\xde\x02\n\x10QueryDepartments\x12\x45\n\x0cquery_option\x18\x01 \x01(\x0e\x32$.ptt.rr.QueryDepartments.QueryOption:\tSELF_SUBS\x12\x16\n\ndepart_ids\x18\x02 \x03(\rB\x02\x10\x01\x12S\n\x12query_group_option\x18\x03 \x01(\x0e\x32).ptt.rr.QueryDepartments.QueryGroupOption:\x0cONLY_BUILTIN\"G\n\x0bQueryOption\x12\r\n\tSELF_SUBS\x10\x00\x12\r\n\tONLY_SUBS\x10\x01\x12\x0c\n\x08\x45XPLICIT\x10\x02\x12\x0c\n\x08PARALLEL\x10\x03\"M\n\x10QueryGroupOption\x12\x10\n\x0cONLY_BUILTIN\x10\x00\x12\x0f\n\x0bONLY_STATIC\x10\x01\x12\x16\n\x12\x42UILTIN_AND_STATIC\x10\x02\"K\n\x13QueryDepartmentsAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12$\n\x0b\x64\x65partments\x18\x02 \x03(\x0b\x32\x0f.ptt.Department\"B\n\x16QueryDepartmentMembers\x12\x0c\n\x04\x64ids\x18\x01 \x03(\r\x12\x1a\n\x0bonly_online\x18\x02 \x01(\x08:\x05\x66\x61lse\"T\n\x19QueryDepartmentMembersAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\'\n\x07members\x18\x02 \x03(\x0b\x32\x16.ptt.DepartmentMembers\"\"\n\x13QueryDepartmentTree\x12\x0b\n\x03\x64id\x18\x01 \x02(\r\"M\n\x16QueryDepartmentTreeAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12#\n\ndepartment\x18\x02 \x01(\x0b\x32\x0f.ptt.Department\"%\n\tJoinGroup\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0b\n\x03uid\x18\x02 \x01(\r\"\x8c\x01\n\x0cJoinGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0e\n\x03gid\x18\x02 \x01(\r:\x01\x30\x12\r\n\x02ip\x18\x03 \x01(\r:\x01\x30\x12\x0f\n\x04port\x18\x04 \x01(\r:\x01\x30\x12\x0f\n\x07payload\x18\x05 \x01(\r\x12\x10\n\x05token\x18\x06 \x01(\r:\x01\x30\x12\x19\n\x05group\x18\x07 \x01(\x0b\x32\n.ptt.Group\"Q\n\nWatchGroup\x12\x0b\n\x03gid\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\r\x12\x16\n\texpect_pt\x18\x03 \x01(\r:\x03\x31\x30\x33\x12\x11\n\taccept_pt\x18\x04 \x03(\r\"/\n\rWatchGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0e\n\x03gid\x18\x02 \x01(\r:\x01\x30\"$\n\x08\x42yeGroup\x12\x0b\n\x03gid\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\r\"&\n\nIgnoreTalk\x12\x0b\n\x03gid\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\r\"(\n\x0c\x43ontinueTalk\x12\x0b\n\x03gid\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\r\",\n\x03\x44nd\x12\x0b\n\x03gid\x18\x01 \x01(\r\x12\x0b\n\x03uid\x18\x02 \x01(\r\x12\x0b\n\x03\x64nd\x18\x03 \x01(\x08\"\x1c\n\nLeaveGroup\x12\x0e\n\x03gid\x18\x01 \x01(\r:\x01\x30\"/\n\rLeaveGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0e\n\x03gid\x18\x02 \x01(\r:\x01\x30\"@\n\nRequestMic\x12\x0e\n\x03gid\x18\x01 \x01(\r:\x01\x30\x12\x0e\n\x03uid\x18\x02 \x01(\r:\x01\x30\x12\x12\n\x07payload\x18\x03 \x01(\r:\x01\x30\"/\n\rRequestMicAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0e\n\x03gid\x18\x02 \x01(\r:\x01\x30\",\n\nReleaseMic\x12\x0e\n\x03gid\x18\x01 \x01(\r:\x01\x30\x12\x0e\n\x03uid\x18\x02 \x01(\r:\x01\x30\"/\n\rReleaseMicAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0e\n\x03gid\x18\x02 \x01(\r:\x01\x30\")\n\x04\x43\x61ll\x12\x10\n\x04uids\x18\x01 \x03(\rB\x02\x10\x01\x12\x0f\n\x04type\x18\x02 \x01(\r:\x01\x30\"\'\n\x07\x43\x61llAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0c\n\x04uids\x18\x02 \x03(\r\"\x19\n\tQuickDial\x12\x0c\n\x04nums\x18\x01 \x02(\t\"a\n\x0cQuickDialAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1f\n\x08userinfo\x18\x02 \x01(\x0b\x32\r.ptt.UserInfo\x12 \n\tduplicate\x18\x03 \x03(\x0b\x32\r.ptt.UserInfo\"\x1a\n\nChangeName\x12\x0c\n\x04name\x18\x01 \x02(\t\"-\n\rChangeNameAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\":\n\x0e\x43hangePassword\x12\x13\n\x0bold_pwd_md5\x18\x01 \x02(\t\x12\x13\n\x0bnew_pwd_md5\x18\x02 \x02(\t\"5\n\x11\x43hangePasswordAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x10\n\x08password\x18\x02 \x01(\t\"<\n\x0cMakeContacts\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x10\n\x08\x61\x63\x63ounts\x18\x02 \x03(\t\x12\x0c\n\x04uids\x18\x03 \x03(\r\"!\n\x0fMakeContactsAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\"A\n\x14MakeContactsResponse\x12\x13\n\x0b\x61\x63\x63\x65pt_uids\x18\x01 \x03(\r\x12\x14\n\x0crefused_uids\x18\x02 \x03(\r\"D\n\x17MakeContactsResponseAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x19\n\x11new_contacts_uids\x18\x02 \x03(\r\"\x1e\n\x0eRemoveContacts\x12\x0c\n\x04uids\x18\x01 \x03(\r\"4\n\x11RemoveContactsAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0f\n\x07rm_uids\x18\x02 \x03(\r\"\x9f\x01\n\x0eReportLocation\x12\x14\n\ttimestamp\x18\x01 \x01(\r:\x01\x30\x12#\n\ncoordinate\x18\x02 \x01(\x0b\x32\x0f.ptt.Coordinate\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\t\x12\x1f\n\x08\x64\x61tetime\x18\x04 \x01(\x0b\x32\r.ptt.DateTime\x12 \n\tlocations\x18\x05 \x03(\x0b\x32\r.ptt.Location\"#\n\x11ReportLocationAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\"\x13\n\x04Kick\x12\x0b\n\x03uid\x18\x01 \x03(\r\".\n\x07KickAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x13\n\x0bkicked_uids\x18\x02 \x03(\r\"\x1b\n\x0b\x43reateGroup\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x0e\x43reateGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x19\n\x05group\x18\x02 \x01(\x0b\x32\n.ptt.Group\"\x1b\n\x0b\x44\x65leteGroup\x12\x0c\n\x04gids\x18\x01 \x03(\r\"6\n\x0e\x44\x65leteGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x14\n\x0c\x64\x65leted_gids\x18\x02 \x03(\r\",\n\x0bModifyGroup\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x10\n\x08new_name\x18\x02 \x01(\t\"?\n\x0eModifyGroupAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0b\n\x03gid\x18\x02 \x01(\r\x12\x10\n\x08new_name\x18\x03 \x01(\t\".\n\x11\x45mpowerMembership\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0c\n\x04uids\x18\x02 \x03(\r\"A\n\x14\x45mpowerMembershipAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0b\n\x03gid\x18\x02 \x01(\r\x12\x0c\n\x04uids\x18\x03 \x03(\r\".\n\x11\x44\x65priveMembership\x12\x0b\n\x03gid\x18\x01 \x02(\r\x12\x0c\n\x04uids\x18\x02 \x03(\r\"A\n\x14\x44\x65priveMembershipAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0b\n\x03gid\x18\x02 \x01(\r\x12\x0c\n\x04uids\x18\x03 \x03(\r\"(\n\x08\x44ispatch\x12\x0e\n\x03gid\x18\x01 \x01(\r:\x01\x30\x12\x0c\n\x04uids\x18\x02 \x03(\r\"F\n\x0b\x44ispatchAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0e\n\x03gid\x18\x02 \x01(\r:\x01\x30\x12\x17\n\x0f\x64ispatched_uids\x18\x03 \x03(\r\"\x95\x01\n\rConfigureUser\x12\x0c\n\x04uids\x18\x01 \x03(\r\x12\x1d\n\x0f\x61\x63\x63ount_enabled\x18\x02 \x01(\x08:\x04true\x12\x1b\n\raudio_enabled\x18\x03 \x01(\x08:\x04true\x12\x17\n\x0fswitch_location\x18\x04 \x01(\x08\x12!\n\x16location_report_period\x18\x05 \x01(\r:\x01\x30\"l\n\x10\x43onfigureUserAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1d\n\x0f\x61\x63\x63ount_enabled\x18\x02 \x01(\x08:\x04true\x12\x1b\n\raudio_enabled\x18\x03 \x01(\x08:\x04true\x12\x0c\n\x04uids\x18\x04 \x03(\r\"\x17\n\x07TakeMic\x12\x0c\n\x04uids\x18\x01 \x03(\r\"*\n\nTakeMicAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0c\n\x04uids\x18\x02 \x03(\r\"\x0f\n\rSynchDatabase\"\"\n\x10SynchDatabaseAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\"A\n\rPostWorksheet\x12\"\n\nworksheets\x18\x01 \x03(\x0b\x32\x0e.ptt.Worksheet\x12\x0c\n\x04uids\x18\x02 \x03(\r\"9\n\x10PostWorksheetAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x15\n\npost_count\x18\x02 \x01(\x05:\x01\x30\"s\n\x0bQueryServer\x12\x0f\n\x07version\x18\x01 \x02(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x02 \x01(\t\x12\x1f\n\x06system\x18\x03 \x01(\x0b\x32\x0f.ptt.SystemInfo\x12!\n\x04\x63\x61rd\x18\x04 \x01(\x0b\x32\x13.ptt.MobileCardInfo\">\n\x0eQueryServerAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1c\n\x07servers\x18\x02 \x03(\x0b\x32\x0b.ptt.Server\"x\n\x10RequestConfigure\x12\x0f\n\x07version\x18\x01 \x02(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x02 \x01(\t\x12\x1f\n\x06system\x18\x03 \x01(\x0b\x32\x0f.ptt.SystemInfo\x12!\n\x04\x63\x61rd\x18\x04 \x01(\x0b\x32\x13.ptt.MobileCardInfo\"C\n\x13RequestConfigureAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x1c\n\x04\x63onf\x18\x02 \x01(\x0b\x32\x0e.ptt.Configure\"f\n\x0fRequestActivate\x12\x0f\n\x07version\x18\x01 \x02(\t\x12\x1f\n\x06system\x18\x02 \x01(\x0b\x32\x0f.ptt.SystemInfo\x12!\n\x04\x63\x61rd\x18\x03 \x01(\x0b\x32\x13.ptt.MobileCardInfo\"e\n\x12RequestActivateAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x0f\n\x07\x61\x63\x63ount\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x1c\n\x04\x63onf\x18\x04 \x01(\x0b\x32\x0e.ptt.Configure\"\xd2\x01\n\x0f\x43ustomBroadcast\x12?\n\x06method\x18\x01 \x01(\x0e\x32%.ptt.rr.CustomBroadcast.TARGET_METHOD:\x08\x45XPLICIT\x12\x0b\n\x03ids\x18\x02 \x03(\r\x12\x10\n\x08msg_name\x18\x03 \x02(\t\x12\x0b\n\x03msg\x18\x04 \x01(\x0c\"R\n\rTARGET_METHOD\x12\x0c\n\x08\x45XPLICIT\x10\x00\x12\x0b\n\x07\x43OMPANY\x10\x01\x12\x11\n\rGROUP_COMPANY\x10\x02\x12\x13\n\x0f\x41LL_DISPATCHERS\x10\x03\"J\n\x12\x43ustomBroadcastAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x12\n\npost_count\x18\x02 \x01(\r\x12\x10\n\x08post_ids\x18\x03 \x03(\r\"1\n\x0f\x43hangeUserRoles\x12\x0c\n\x04uids\x18\x01 \x03(\r\x12\x10\n\x05roles\x18\x02 \x02(\r:\x01\x30\"D\n\x12\x43hangeUserRolesAck\x12\x0e\n\x06result\x18\x01 \x02(\x05\x12\x10\n\x05roles\x18\x02 \x01(\r:\x01\x30\x12\x0c\n\x04uids\x18\x03 \x03(\rB\x1d\n\x1b\x63om.shanlitech.ptt.protocol')
   ,
-  dependencies=[ptt__pb2.DESCRIPTOR,])
+  dependencies=[ptt_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -291,7 +290,6 @@ _LOGIN = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -343,7 +341,6 @@ _LOGINACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -367,7 +364,6 @@ _LOGOUT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -398,7 +394,6 @@ _LOGOUTACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -465,7 +460,6 @@ _QUERYGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -503,7 +497,6 @@ _QUERYGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -549,7 +542,6 @@ _QUERYENTERPRISEGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -587,7 +579,6 @@ _QUERYENTERPRISEGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -640,7 +631,6 @@ _QUERYMEMBERS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -678,7 +668,6 @@ _QUERYMEMBERSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -716,7 +705,6 @@ _QUERYMEMBERSACK2 = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -762,7 +750,6 @@ _QUERYCONTACTS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -800,7 +787,6 @@ _QUERYCONTACTSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -845,7 +831,6 @@ _QUERYUSERS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -897,7 +882,6 @@ _QUERYUSERSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -944,7 +928,6 @@ _QUERYDEPARTMENTS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -982,7 +965,6 @@ _QUERYDEPARTMENTSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1020,7 +1002,6 @@ _QUERYDEPARTMENTMEMBERS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1058,7 +1039,6 @@ _QUERYDEPARTMENTMEMBERSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1089,7 +1069,6 @@ _QUERYDEPARTMENTTREE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1127,7 +1106,6 @@ _QUERYDEPARTMENTTREEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1165,7 +1143,6 @@ _JOINGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1238,7 +1215,6 @@ _JOINGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1290,7 +1266,6 @@ _WATCHGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1328,7 +1303,6 @@ _WATCHGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1366,7 +1340,6 @@ _BYEGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1404,7 +1377,6 @@ _IGNORETALK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1442,7 +1414,6 @@ _CONTINUETALK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1487,7 +1458,6 @@ _DND = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1518,7 +1488,6 @@ _LEAVEGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1556,7 +1525,6 @@ _LEAVEGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1601,7 +1569,6 @@ _REQUESTMIC = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1639,7 +1606,6 @@ _REQUESTMICACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1677,7 +1643,6 @@ _RELEASEMIC = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1715,7 +1680,6 @@ _RELEASEMICACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1753,7 +1717,6 @@ _CALL = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1791,7 +1754,6 @@ _CALLACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1822,7 +1784,6 @@ _QUICKDIAL = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1867,7 +1828,6 @@ _QUICKDIALACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1898,7 +1858,6 @@ _CHANGENAME = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1936,7 +1895,6 @@ _CHANGENAMEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -1974,7 +1932,6 @@ _CHANGEPASSWORD = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2012,7 +1969,6 @@ _CHANGEPASSWORDACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2057,7 +2013,6 @@ _MAKECONTACTS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2088,7 +2043,6 @@ _MAKECONTACTSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2126,7 +2080,6 @@ _MAKECONTACTSRESPONSE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2164,7 +2117,6 @@ _MAKECONTACTSRESPONSEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2195,7 +2147,6 @@ _REMOVECONTACTS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2233,7 +2184,6 @@ _REMOVECONTACTSACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2292,7 +2242,6 @@ _REPORTLOCATION = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2323,7 +2272,6 @@ _REPORTLOCATIONACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2354,7 +2302,6 @@ _KICK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2392,7 +2339,6 @@ _KICKACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2423,7 +2369,6 @@ _CREATEGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2461,7 +2406,6 @@ _CREATEGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2492,7 +2436,6 @@ _DELETEGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2530,7 +2473,6 @@ _DELETEGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2568,7 +2510,6 @@ _MODIFYGROUP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2613,7 +2554,6 @@ _MODIFYGROUPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2651,7 +2591,6 @@ _EMPOWERMEMBERSHIP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2696,7 +2635,6 @@ _EMPOWERMEMBERSHIPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2734,7 +2672,6 @@ _DEPRIVEMEMBERSHIP = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2779,7 +2716,6 @@ _DEPRIVEMEMBERSHIPACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2817,7 +2753,6 @@ _DISPATCH = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2862,7 +2797,6 @@ _DISPATCHACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2921,7 +2855,6 @@ _CONFIGUREUSER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -2973,7 +2906,6 @@ _CONFIGUREUSERACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3004,7 +2936,6 @@ _TAKEMIC = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3042,7 +2973,6 @@ _TAKEMICACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3066,7 +2996,6 @@ _SYNCHDATABASE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3097,7 +3026,6 @@ _SYNCHDATABASEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3135,7 +3063,6 @@ _POSTWORKSHEET = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3173,7 +3100,6 @@ _POSTWORKSHEETACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3225,7 +3151,6 @@ _QUERYSERVER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3263,7 +3188,6 @@ _QUERYSERVERACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3315,7 +3239,6 @@ _REQUESTCONFIGURE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3353,7 +3276,6 @@ _REQUESTCONFIGUREACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3398,7 +3320,6 @@ _REQUESTACTIVATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3450,7 +3371,6 @@ _REQUESTACTIVATEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3503,7 +3423,6 @@ _CUSTOMBROADCAST = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3548,7 +3467,6 @@ _CUSTOMBROADCASTACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3586,7 +3504,6 @@ _CHANGEUSERROLES = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3631,7 +3548,6 @@ _CHANGEUSERROLESACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -3639,48 +3555,48 @@ _CHANGEUSERROLESACK = _descriptor.Descriptor(
   serialized_end=6387,
 )
 
-_LOGIN.fields_by_name['system'].message_type = ptt__pb2._SYSTEMINFO
-_LOGIN.fields_by_name['card'].message_type = ptt__pb2._MOBILECARDINFO
-_LOGINACK.fields_by_name['self'].message_type = ptt__pb2._USER
-_LOGINACK.fields_by_name['conf'].message_type = ptt__pb2._CONFIGURE
+_LOGIN.fields_by_name['system'].message_type = ptt_pb2._SYSTEMINFO
+_LOGIN.fields_by_name['card'].message_type = ptt_pb2._MOBILECARDINFO
+_LOGINACK.fields_by_name['self'].message_type = ptt_pb2._USER
+_LOGINACK.fields_by_name['conf'].message_type = ptt_pb2._CONFIGURE
 _QUERYGROUP.fields_by_name['detail'].enum_type = _QUERYGROUP_DETAILLEVEL
 _QUERYGROUP_DETAILLEVEL.containing_type = _QUERYGROUP
-_QUERYGROUPACK.fields_by_name['groups'].message_type = ptt__pb2._GROUP
+_QUERYGROUPACK.fields_by_name['groups'].message_type = ptt_pb2._GROUP
 _QUERYENTERPRISEGROUP.fields_by_name['range_option'].enum_type = _QUERYENTERPRISEGROUP_RANGEOPTION
 _QUERYENTERPRISEGROUP_RANGEOPTION.containing_type = _QUERYENTERPRISEGROUP
-_QUERYENTERPRISEGROUPACK.fields_by_name['groups'].message_type = ptt__pb2._GROUP
+_QUERYENTERPRISEGROUPACK.fields_by_name['groups'].message_type = ptt_pb2._GROUP
 _QUERYMEMBERS.fields_by_name['detail'].enum_type = _QUERYMEMBERS_DETAILLEVEL
 _QUERYMEMBERS_DETAILLEVEL.containing_type = _QUERYMEMBERS
-_QUERYMEMBERSACK.fields_by_name['members'].message_type = ptt__pb2._GROUPMEMBERS
-_QUERYMEMBERSACK2.fields_by_name['members'].message_type = ptt__pb2._GROUPMEMBERS2
+_QUERYMEMBERSACK.fields_by_name['members'].message_type = ptt_pb2._GROUPMEMBERS
+_QUERYMEMBERSACK2.fields_by_name['members'].message_type = ptt_pb2._GROUPMEMBERS2
 _QUERYCONTACTS.fields_by_name['detail'].enum_type = _QUERYCONTACTS_DETAILLEVEL
 _QUERYCONTACTS_DETAILLEVEL.containing_type = _QUERYCONTACTS
-_QUERYCONTACTSACK.fields_by_name['users'].message_type = ptt__pb2._USER
-_QUERYUSERSACK.fields_by_name['users'].message_type = ptt__pb2._USER
+_QUERYCONTACTSACK.fields_by_name['users'].message_type = ptt_pb2._USER
+_QUERYUSERSACK.fields_by_name['users'].message_type = ptt_pb2._USER
 _QUERYDEPARTMENTS.fields_by_name['query_option'].enum_type = _QUERYDEPARTMENTS_QUERYOPTION
 _QUERYDEPARTMENTS.fields_by_name['query_group_option'].enum_type = _QUERYDEPARTMENTS_QUERYGROUPOPTION
 _QUERYDEPARTMENTS_QUERYOPTION.containing_type = _QUERYDEPARTMENTS
 _QUERYDEPARTMENTS_QUERYGROUPOPTION.containing_type = _QUERYDEPARTMENTS
-_QUERYDEPARTMENTSACK.fields_by_name['departments'].message_type = ptt__pb2._DEPARTMENT
-_QUERYDEPARTMENTMEMBERSACK.fields_by_name['members'].message_type = ptt__pb2._DEPARTMENTMEMBERS
-_QUERYDEPARTMENTTREEACK.fields_by_name['department'].message_type = ptt__pb2._DEPARTMENT
-_JOINGROUPACK.fields_by_name['group'].message_type = ptt__pb2._GROUP
-_QUICKDIALACK.fields_by_name['userinfo'].message_type = ptt__pb2._USERINFO
-_QUICKDIALACK.fields_by_name['duplicate'].message_type = ptt__pb2._USERINFO
-_REPORTLOCATION.fields_by_name['coordinate'].message_type = ptt__pb2._COORDINATE
-_REPORTLOCATION.fields_by_name['datetime'].message_type = ptt__pb2._DATETIME
-_REPORTLOCATION.fields_by_name['locations'].message_type = ptt__pb2._LOCATION
-_CREATEGROUPACK.fields_by_name['group'].message_type = ptt__pb2._GROUP
-_POSTWORKSHEET.fields_by_name['worksheets'].message_type = ptt__pb2._WORKSHEET
-_QUERYSERVER.fields_by_name['system'].message_type = ptt__pb2._SYSTEMINFO
-_QUERYSERVER.fields_by_name['card'].message_type = ptt__pb2._MOBILECARDINFO
-_QUERYSERVERACK.fields_by_name['servers'].message_type = ptt__pb2._SERVER
-_REQUESTCONFIGURE.fields_by_name['system'].message_type = ptt__pb2._SYSTEMINFO
-_REQUESTCONFIGURE.fields_by_name['card'].message_type = ptt__pb2._MOBILECARDINFO
-_REQUESTCONFIGUREACK.fields_by_name['conf'].message_type = ptt__pb2._CONFIGURE
-_REQUESTACTIVATE.fields_by_name['system'].message_type = ptt__pb2._SYSTEMINFO
-_REQUESTACTIVATE.fields_by_name['card'].message_type = ptt__pb2._MOBILECARDINFO
-_REQUESTACTIVATEACK.fields_by_name['conf'].message_type = ptt__pb2._CONFIGURE
+_QUERYDEPARTMENTSACK.fields_by_name['departments'].message_type = ptt_pb2._DEPARTMENT
+_QUERYDEPARTMENTMEMBERSACK.fields_by_name['members'].message_type = ptt_pb2._DEPARTMENTMEMBERS
+_QUERYDEPARTMENTTREEACK.fields_by_name['department'].message_type = ptt_pb2._DEPARTMENT
+_JOINGROUPACK.fields_by_name['group'].message_type = ptt_pb2._GROUP
+_QUICKDIALACK.fields_by_name['userinfo'].message_type = ptt_pb2._USERINFO
+_QUICKDIALACK.fields_by_name['duplicate'].message_type = ptt_pb2._USERINFO
+_REPORTLOCATION.fields_by_name['coordinate'].message_type = ptt_pb2._COORDINATE
+_REPORTLOCATION.fields_by_name['datetime'].message_type = ptt_pb2._DATETIME
+_REPORTLOCATION.fields_by_name['locations'].message_type = ptt_pb2._LOCATION
+_CREATEGROUPACK.fields_by_name['group'].message_type = ptt_pb2._GROUP
+_POSTWORKSHEET.fields_by_name['worksheets'].message_type = ptt_pb2._WORKSHEET
+_QUERYSERVER.fields_by_name['system'].message_type = ptt_pb2._SYSTEMINFO
+_QUERYSERVER.fields_by_name['card'].message_type = ptt_pb2._MOBILECARDINFO
+_QUERYSERVERACK.fields_by_name['servers'].message_type = ptt_pb2._SERVER
+_REQUESTCONFIGURE.fields_by_name['system'].message_type = ptt_pb2._SYSTEMINFO
+_REQUESTCONFIGURE.fields_by_name['card'].message_type = ptt_pb2._MOBILECARDINFO
+_REQUESTCONFIGUREACK.fields_by_name['conf'].message_type = ptt_pb2._CONFIGURE
+_REQUESTACTIVATE.fields_by_name['system'].message_type = ptt_pb2._SYSTEMINFO
+_REQUESTACTIVATE.fields_by_name['card'].message_type = ptt_pb2._MOBILECARDINFO
+_REQUESTACTIVATEACK.fields_by_name['conf'].message_type = ptt_pb2._CONFIGURE
 _CUSTOMBROADCAST.fields_by_name['method'].enum_type = _CUSTOMBROADCAST_TARGET_METHOD
 _CUSTOMBROADCAST_TARGET_METHOD.containing_type = _CUSTOMBROADCAST
 DESCRIPTOR.message_types_by_name['Login'] = _LOGIN

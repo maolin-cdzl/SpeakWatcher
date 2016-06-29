@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import ptt_pb2 as ptt__pb2
+import ptt_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='loc.proto',
   package='ptt.loc',
-  syntax='proto2',
   serialized_pb=_b('\n\tloc.proto\x12\x07ptt.loc\x1a\tptt.proto\"W\n\tLocReport\x12\x0b\n\x03uid\x18\x01 \x02(\x04\x12 \n\tlocations\x18\x02 \x03(\x0b\x32\r.ptt.Location\x12\x1b\n\x04time\x18\x03 \x01(\x0b\x32\r.ptt.DateTime\"1\n\nLocReports\x12#\n\x07reports\x18\x01 \x03(\x0b\x32\x12.ptt.loc.LocReportB\x18\n\x16\x63om.shanlitech.ptt.loc')
   ,
-  dependencies=[ptt__pb2.DESCRIPTOR,])
+  dependencies=[ptt_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -64,7 +63,6 @@ _LOCREPORT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -95,7 +93,6 @@ _LOCREPORTS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -103,8 +100,8 @@ _LOCREPORTS = _descriptor.Descriptor(
   serialized_end=171,
 )
 
-_LOCREPORT.fields_by_name['locations'].message_type = ptt__pb2._LOCATION
-_LOCREPORT.fields_by_name['time'].message_type = ptt__pb2._DATETIME
+_LOCREPORT.fields_by_name['locations'].message_type = ptt_pb2._LOCATION
+_LOCREPORT.fields_by_name['time'].message_type = ptt_pb2._DATETIME
 _LOCREPORTS.fields_by_name['reports'].message_type = _LOCREPORT
 DESCRIPTOR.message_types_by_name['LocReport'] = _LOCREPORT
 DESCRIPTOR.message_types_by_name['LocReports'] = _LOCREPORTS

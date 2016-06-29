@@ -13,16 +13,15 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import ptt_pb2 as ptt__pb2
+import ptt_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='cluster.proto',
   package='ptt.cluster',
-  syntax='proto2',
   serialized_pb=_b('\n\rcluster.proto\x12\x0bptt.cluster\x1a\tptt.proto\"/\n\x0bQueryServer\x12\x0f\n\x07version\x18\x01 \x02(\t\x12\x0f\n\x07\x63ontext\x18\x02 \x01(\t\"?\n\x0eQueryServerAck\x12\x1c\n\x07servers\x18\x01 \x02(\x0b\x32\x0b.ptt.Server\x12\x0f\n\x07\x63ontext\x18\x02 \x01(\t\"2\n\x0cNotifyServer\x12\x11\n\tcompanyid\x18\x01 \x02(\t\x12\x0f\n\x07peponum\x18\x02 \x02(\x05\"!\n\x0fNotifyServerAck\x12\x0e\n\x06result\x18\x01 \x02(\x05')
   ,
-  dependencies=[ptt__pb2.DESCRIPTOR,])
+  dependencies=[ptt_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -57,7 +56,6 @@ _QUERYSERVER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -95,7 +93,6 @@ _QUERYSERVERACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -133,7 +130,6 @@ _NOTIFYSERVER = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -164,7 +160,6 @@ _NOTIFYSERVERACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -172,7 +167,7 @@ _NOTIFYSERVERACK = _descriptor.Descriptor(
   serialized_end=240,
 )
 
-_QUERYSERVERACK.fields_by_name['servers'].message_type = ptt__pb2._SERVER
+_QUERYSERVERACK.fields_by_name['servers'].message_type = ptt_pb2._SERVER
 DESCRIPTOR.message_types_by_name['QueryServer'] = _QUERYSERVER
 DESCRIPTOR.message_types_by_name['QueryServerAck'] = _QUERYSERVERACK
 DESCRIPTOR.message_types_by_name['NotifyServer'] = _NOTIFYSERVER
